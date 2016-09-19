@@ -1,0 +1,15 @@
+spring:
+    redis:
+        host: localhost
+        port: 6379
+        password: admin
+    datasource: 
+      bvc:
+        url: jdbc:mysql://192.168.0.1/RULE
+        username: bvuser
+        password: z4u5rvy
+        driver-class-name: com.mysql.jdbc.Driver
+        auto-reconnect: true
+        max-active: 50
+        test-on-borrow: true
+        

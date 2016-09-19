@@ -1,0 +1,23 @@
+package cc.blueview.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.GenericToStringSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+@Configuration
+public class RedisConfig {
+
+	@Bean
+	RedisTemplate<String, Object> redisTemplateObj(RedisConnectionFactory connectionFactory) {
+		final RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
+		template.setConnectionFactory(connectionFactory);
+		template.setKeySerializer(new StringRedisSerializer());
+		template.setHashValueSerializer(new GenericToStringSerializer<Object>(Object.class));
+		template.setValueSerializer(new GenericToStringSerializer<Object>(Object.class));
+		return template;
+	}
+
+}
